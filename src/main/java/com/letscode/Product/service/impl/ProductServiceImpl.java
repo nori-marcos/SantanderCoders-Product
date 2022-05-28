@@ -1,13 +1,11 @@
 package com.letscode.Product.service.impl;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.letscode.Product.DTO.ProductRequest;
 import com.letscode.Product.DTO.ProductResponse;
 import com.letscode.Product.model.Product;
 import com.letscode.Product.repository.ProductRepository;
 import com.letscode.Product.service.ProductService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
