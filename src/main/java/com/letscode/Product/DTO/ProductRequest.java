@@ -3,15 +3,16 @@ package com.letscode.Product.DTO;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.math.BigDecimal;
+
 @Getter
 @Setter
 public class ProductRequest {
 
     private String nome;
 
-    private String cpf;
+    private BigDecimal price;
 
-    private String senha;
+    private  int quantity;
 
-    private String email;
 }

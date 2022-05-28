@@ -4,21 +4,25 @@ import com.letscode.Product.model.Product;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.math.BigDecimal;
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Getter
 @Setter
 public class ProductResponse {
 
     private String uuid;
-    private String nome;
-    private String cpf;
-    private String senha;
-    private String email;
+    private String name;
+    private BigDecimal price;
+    private int quantity;
     public ProductResponse(Product product) {
         this.uuid = product.getUuid();
-        this.nome = product.getNome();
-        this.cpf = product.getCpf();
-        this.email = product.getEmail();
-        this.senha = product.getSenha();
+        this.name = product.getName();
+        this.price = product.getPrice();
+        this.quantity = product.getQuantity();
     }
-
+    public static List<ProductResponse> toResponse (List<Product> productList){
+        return productList.stream().map(ProductResponse::new).collect(Collectors.toList());
+    }
 }

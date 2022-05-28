@@ -1,4 +1,14 @@
 services:
+#  application-product:
+#    container_name: product-api
+#    image: product-api:latest
+#    networks:
+#      - shopping-network
+#    ports:
+#      - 8081:8081
+#    depends_on:
+#      - pgadmin-container;
+
   postgres-container:
     container_name: postgres-container
     image: postgres
@@ -7,6 +17,7 @@ services:
     networks:
       - shopping-network
     environment:
+      POSTGRES_USERNAME: "postgres"
       POSTGRES_PASSWORD: "postgres"
       POSTGRES_DB: "products-db"
 

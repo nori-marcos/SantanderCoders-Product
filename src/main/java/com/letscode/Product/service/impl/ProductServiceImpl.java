@@ -25,16 +25,24 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<ProductResponse> findAllProducts() {
-        return null;
+
+        List<Product> savedProducts = productRepository.findAll();
+
+        return ProductResponse.toResponse(savedProducts);
     }
 
     @Override
     public ProductResponse findProductByUuid(String uuid) {
-        return null;
+
+        Product savedProduct= productRepository.findByUuid(uuid);
+
+        return new ProductResponse(savedProduct);
     }
 
     @Override
     public void deleteProductByUuid(String uuid) {
+
+        productRepository.findByUuid(uuid);
 
     }
 }

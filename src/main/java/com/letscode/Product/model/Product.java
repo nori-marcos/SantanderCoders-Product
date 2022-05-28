@@ -25,20 +25,19 @@ public class Product {
     private String uuid = UUID.randomUUID().toString();
 
     @Column(name = "nome")
-    private String nome;
+    private String name;
 
-    @Column(name = "valor")
-    private BigDecimal valor;
+    @Column(name = "price")
+    private BigDecimal price;
 
-    @Column(name = "quantidade")
-    private int quantidade;
+    @Column(name = "quantity")
+    private int quantity;
 
 
     public Product(ProductRequest productRequest){
-        this.nome = productRequest.getNome();
-        this.cpf = productRequest.getCpf();
-        this.email = productRequest.getEmail();
-        this.senha = productRequest.getSenha();
+        this.name = productRequest.getNome();
+        this.price = productRequest.getPrice();
+        this.quantity = productRequest.getQuantity();
     }
 
 }

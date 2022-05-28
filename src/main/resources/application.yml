@@ -1,0 +1,14 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: product-api
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/products-db
+    password: postgres
+    username: postgres
+  jpa:
+    hibernate:
+      ddl-auto: update
