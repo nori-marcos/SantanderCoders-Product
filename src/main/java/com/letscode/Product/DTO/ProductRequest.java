@@ -12,7 +12,7 @@ import java.math.BigDecimal;
 @Setter
 public class ProductRequest {
 
-    @NotNull(message = "Name should not be null")
+    @NotNull
     @Schema(description = "Nome do produto", example = "Geladeira")
     private String name;
 
