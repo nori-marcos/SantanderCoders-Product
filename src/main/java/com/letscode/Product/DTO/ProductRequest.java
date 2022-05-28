@@ -12,15 +12,15 @@ import java.math.BigDecimal;
 @Setter
 public class ProductRequest {
 
-    
+    @NotNull(message = "Name should not be null")
     @Schema(description = "Nome do produto", example = "Geladeira")
     private String name;
 
-    @NotNull
+    @NotNull(message = "Price should not be null")
     @Schema(description = "Preço do produto", example = "2000")
     private BigDecimal price;
 
-    @NotNull
+    @NotNull(message = "Quantity should not be null")
     @Min(1)
     @Schema(description = "Quantidade de produtos para salvar no estoque", example = "1")
     private  int quantity;

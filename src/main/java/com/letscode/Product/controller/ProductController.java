@@ -6,6 +6,7 @@ import com.letscode.Product.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -15,7 +16,7 @@ public class ProductController {
     private final ProductService productService;
 
     @PostMapping
-    public ProductResponse registerProduct(@RequestBody ProductRequest productRequest) {
+    public ProductResponse registerProduct(@RequestBody @Valid ProductRequest productRequest) {
         return productService.registerProduct(productRequest);
     }
 

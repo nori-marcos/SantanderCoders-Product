@@ -35,7 +35,7 @@ public class Product {
 
 
     public Product(ProductRequest productRequest){
-        this.name = productRequest.getNome();
+        this.name = productRequest.getName();
         this.price = productRequest.getPrice();
         this.quantity = productRequest.getQuantity();
     }
