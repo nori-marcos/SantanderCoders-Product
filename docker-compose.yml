@@ -34,6 +34,15 @@ services:
     networks:
       - shopping-network
 
+  prometheus-compose:
+    container_name: prometheus
+    image: prom/prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - /home/samuelnfavero/Documentos/Development/CursoMicrosserviços/book-service/src/main/resources/prometheus.yml:/etc/prometheus/prometheus.yml
+    network_mode: host
+
 networks:
   shopping-network:
     driver: bridge

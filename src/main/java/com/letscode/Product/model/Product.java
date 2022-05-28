@@ -1,7 +1,6 @@
 package com.letscode.Product.model;
 
 import com.letscode.Product.DTO.ProductRequest;
-import com.letscode.Product.DTO.ProductResponse;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -34,7 +33,7 @@ public class Product {
     private int quantity;
 
 
-    public Product(ProductRequest productRequest){
+    public Product(ProductRequest productRequest) {
         this.name = productRequest.getName();
         this.price = productRequest.getPrice();
         this.quantity = productRequest.getQuantity();

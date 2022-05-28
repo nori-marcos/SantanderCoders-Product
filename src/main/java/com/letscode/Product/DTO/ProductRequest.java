@@ -16,13 +16,13 @@ public class ProductRequest {
     @Schema(description = "Nome do produto", example = "Geladeira")
     private String name;
 
-    @NotNull(message = "Price should not be null")
+    @NotNull
     @Schema(description = "Preço do produto", example = "2000")
     private BigDecimal price;
 
-    @NotNull(message = "Quantity should not be null")
+    @NotNull
     @Min(1)
     @Schema(description = "Quantidade de produtos para salvar no estoque", example = "1")
-    private  int quantity;
+    private int quantity;
 
 }

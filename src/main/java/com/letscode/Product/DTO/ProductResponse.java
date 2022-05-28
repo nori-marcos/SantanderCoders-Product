@@ -16,13 +16,15 @@ public class ProductResponse {
     private String name;
     private BigDecimal price;
     private int quantity;
+
     public ProductResponse(Product product) {
         this.uuid = product.getUuid();
         this.name = product.getName();
         this.price = product.getPrice();
         this.quantity = product.getQuantity();
     }
-    public static List<ProductResponse> toResponse (List<Product> productList){
+
+    public static List<ProductResponse> toResponse(List<Product> productList) {
         return productList.stream().map(ProductResponse::new).collect(Collectors.toList());
     }
 }

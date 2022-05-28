@@ -34,7 +34,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public ProductResponse findProductByUuid(String uuid) {
 
-        Product savedProduct= productRepository.findByUuid(uuid);
+        Product savedProduct = productRepository.findByUuid(uuid);
 
         return new ProductResponse(savedProduct);
     }
