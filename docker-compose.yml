@@ -1,0 +1,28 @@
+services:
+  postgres-container:
+    container_name: postgres-container
+    image: postgres
+    ports:
+      - "5432:5432"
+    networks:
+      - shopping-network
+    environment:
+      POSTGRES_PASSWORD: "postgres"
+      POSTGRES_DB: "products-db"
+
+  pgadmin-container:
+    container_name: pgadmin-container
+    image: dpage/pgadmin4
+    ports:
+      - "15432:15432"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "811@gmail.com"
+      PGADMIN_DEFAULT_PASSWORD: "postgres"
+    depends_on:
+      - postgres-container
+    networks:
+      - shopping-network
+
+networks:
+  shopping-network:
+    driver: bridge
