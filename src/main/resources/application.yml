@@ -6,7 +6,7 @@ spring:
     name: product-api
 
   datasource:
-    url: jdbc:postgresql://localhost:5432/products-db
+    url: jdbc:postgresql://postgres-container:5432/products-db
     password: postgres
     username: postgres
   jpa:
