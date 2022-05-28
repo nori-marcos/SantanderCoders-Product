@@ -40,9 +40,24 @@ services:
     ports:
       - "9090:9090"
     volumes:
-      - /home/samuelnfavero/Documentos/Development/CursoMicrosserviços/book-service/src/main/resources/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./config/prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus_data:/prometheus
     network_mode: host
+
+  grafana:
+    image: grafana/grafana:latest
+    volumes:
+      - ./grafana/provisioning:/etc/grafana/provisioning
+      - grafana_data:/var/lib/grafana
+    ports:
+      - 3000:3000
+    networks:
+      - shopping-network
 
 networks:
   shopping-network:
     driver: bridge
+
+volumes:
+  grafana_data:
+  prometheus_data:
