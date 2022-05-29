@@ -9,14 +9,28 @@ spring:
     url: jdbc:postgresql://postgres-container:5432/products-db
     password: postgres
     username: postgres
+    hikari:
+      schema: products
   jpa:
     hibernate:
       ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        jdbc:
+          lob:
+            non_contextual_creation: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+  flyway:
+    url: jdbc:postgresql://postgres-container:5432/products-db
+    schemas: products
+    user: postgres
+    password: postgres
 
 management:
+
   endpoints:
-    health:
-      show-details: always
     web:
       exposure:
         include: '*'
@@ -27,6 +41,8 @@ management:
     tags:
       application: ${spring:application:name}
   endpoint:
+    health:
+      show-details: always
     metrics:
       enabled: false
     prometheus:

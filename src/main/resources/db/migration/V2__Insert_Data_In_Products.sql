@@ -1,0 +1,16 @@
+﻿INSERT INTO "products" (nome, price, quantity, uuid) VALUES
+	('Geladeira', 3100, 8, '5fe38334-df55-11ec-9d64-0242ac120002'),
+	('Fogão', 1100, 7, '6d30362c-df55-11ec-9d64-0242ac120002'),
+	('Mesa', 1000, 13, '70843a94-df55-11ec-9d64-0242ac120002'),
+	('Cadeira', 100, 11, '73699d80-df55-11ec-9d64-0242ac120002'),
+	('Televisao', 1900, 10, '779add24-df55-11ec-9d64-0242ac120002'),
+	('Sofa', 2200, 15, '8253d9d2-df55-11ec-9d64-0242ac120002'),
+	('Microondas', 350, 19, '85e1d2b6-df55-11ec-9d64-0242ac120002'),
+	('Liquidificador', 200, 16, '88bac704-df55-11ec-9d64-0242ac120002'),
+	('Cama', 900, 13, '8bc7b592-df55-11ec-9d64-0242ac120002'),
+	('Maquina de lavar', 1400, 21, '8f06209a-df55-11ec-9d64-0242ac120002'),
+	('Notebook', 3500, 9, '92ca0c14-df55-11ec-9d64-0242ac120002'),
+	('Tablet', 1600, 9, '95b0f820-df55-11ec-9d64-0242ac120002'),
+	('Celular', 1500, 16, '98a05bac-df55-11ec-9d64-0242ac120002'),
+	('Relógio', 500, 10, '9ba0b5f4-df55-11ec-9d64-0242ac120002'),
+	('Guarda Roupas', 2000, 9, '9e928116-df55-11ec-9d64-0242ac120002');

@@ -9,7 +9,7 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.UUID;
 
-@Table(name = "product")
+@Table(name = "products")
 @Entity
 @Getter
 @Setter
@@ -23,7 +23,7 @@ public class Product {
     @Column(name = "uuid")
     private String uuid = UUID.randomUUID().toString();
 
-    @Column(name = "name")
+    @Column(name = "nome")
     private String name;
 
     @Column(name = "price")
