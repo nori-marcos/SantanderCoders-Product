@@ -42,7 +42,8 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public void deleteProductByUuid(String uuid) {
 
-        productRepository.findByUuid(uuid);
+        Product savedProduct = productRepository.findByUuid(uuid);
 
+        productRepository.delete(savedProduct);
     }
 }
