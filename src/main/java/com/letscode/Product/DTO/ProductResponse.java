@@ -24,6 +24,13 @@ public class ProductResponse {
         this.quantity = product.getQuantity();
     }
 
+    public ProductResponse(Product product, int quantity) {
+        this.uuid = product.getUuid();
+        this.name = product.getName();
+        this.price = product.getPrice();
+        this.quantity = quantity;
+    }
+
     public static List<ProductResponse> toResponse(List<Product> productList) {
         return productList.stream().map(ProductResponse::new).collect(Collectors.toList());
     }
