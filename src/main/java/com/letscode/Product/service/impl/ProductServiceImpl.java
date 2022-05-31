@@ -14,47 +14,48 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ProductServiceImpl implements ProductService {
 
-    private final ProductRepository productRepository;
+  private final ProductRepository productRepository;
 
-    @Override
-    public ProductResponse registerProduct(ProductRequest productRequest) {
-        Product product = new Product(productRequest);
-        Product savedProduct = productRepository.save(product);
-        return new ProductResponse(savedProduct);
+  @Override
+  public ProductResponse registerProduct(ProductRequest productRequest) {
+    Product product = new Product(productRequest);
+    Product savedProduct = productRepository.save(product);
+    return new ProductResponse(savedProduct);
+  }
+
+  @Override
+  public List<ProductResponse> findAllProducts() {
+
+    List<Product> savedProducts = productRepository.findAll();
+
+    return ProductResponse.toResponse(savedProducts);
+  }
+
+  @Override
+  public ProductResponse findProductByUuid(String uuid) {
+
+    Product savedProduct = productRepository.findByUuid(uuid);
+
+    return new ProductResponse(savedProduct);
+  }
+
+  @Override
+  public void deleteProductByUuid(String uuid) {
+
+    Product savedProduct = productRepository.findByUuid(uuid);
+
+    productRepository.delete(savedProduct);
+  }
+
+  @Override
+  public ProductResponse getProductForSale(String uuid, int quantity) {
+
+    Product product = productRepository.findByUuid(uuid);
+    if (product.getQuantity() < quantity) {
+      throw new RuntimeException(
+          String.format("Existem somente %s produtos no estoque", product.getQuantity()));
     }
 
-    @Override
-    public List<ProductResponse> findAllProducts() {
-
-        List<Product> savedProducts = productRepository.findAll();
-
-        return ProductResponse.toResponse(savedProducts);
-    }
-
-    @Override
-    public ProductResponse findProductByUuid(String uuid) {
-
-        Product savedProduct = productRepository.findByUuid(uuid);
-
-        return new ProductResponse(savedProduct);
-    }
-
-    @Override
-    public void deleteProductByUuid(String uuid) {
-
-        Product savedProduct = productRepository.findByUuid(uuid);
-
-        productRepository.delete(savedProduct);
-    }
-
-    @Override
-    public ProductResponse getProductForSale(String uuid, int quantity) {
-
-        Product product = productRepository.findByUuid(uuid);
-
-        if(product.getQuantity() < quantity)
-            throw new RuntimeException(String.format("Existem somente %s produtos no estoque", product.getQuantity()));
-
-        return new ProductResponse(product, quantity);
-    }
+    return new ProductResponse(product, quantity);
+  }
 }
