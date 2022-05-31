@@ -35,4 +35,8 @@ public class ProductController {
         productService.deleteProductByUuid(uuid);
     }
 
+    @GetMapping("/{uuid}/{quantity}")
+    public ProductResponse getProductForSale(@PathVariable("uuid") String uuid, @PathVariable("quantity") int quantity) {
+        return productService.getProductForSale(uuid, quantity);
+    }
 }
