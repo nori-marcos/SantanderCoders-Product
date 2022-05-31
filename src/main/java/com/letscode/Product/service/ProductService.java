@@ -13,4 +13,6 @@ public interface ProductService {
     ProductResponse findProductByUuid(String uuid);
 
     void deleteProductByUuid(String uuid);
+
+    ProductResponse getProductForSale(String uuid, int quantity);
 }

@@ -46,4 +46,15 @@ public class ProductServiceImpl implements ProductService {
 
         productRepository.delete(savedProduct);
     }
+
+    @Override
+    public ProductResponse getProductForSale(String uuid, int quantity) {
+
+        Product product = productRepository.findByUuid(uuid);
+
+        if(product.getQuantity() < quantity)
+            throw new RuntimeException(String.format("Existem somente %s produtos no estoque", product.getQuantity()));
+
+        return new ProductResponse(product, quantity);
+    }
 }
