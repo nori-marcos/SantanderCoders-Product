@@ -1,7 +1,9 @@
 services:
   application-product:
+    build:
+      context: .
+      dockerfile: Dockerfile
     container_name: product-api
-    image: product-api:latest
     networks:
       - shopping-network
     ports:
