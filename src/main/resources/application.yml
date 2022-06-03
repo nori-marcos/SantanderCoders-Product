@@ -1,16 +1,16 @@
 server:
   port: 8081
 
-spring:
-  application:
-    name: product-api
-
 eureka:
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka
+
+spring:
+  application:
+    name: product-api
   datasource:
-    url: jdbc:postgresql://postgres-container:5432/products-db
+    url: jdbc:postgresql://localhost:5432/products-db
     password: postgres
     username: postgres
     hikari:
@@ -27,7 +27,7 @@ eureka:
         dialect: org.hibernate.dialect.PostgreSQLDialect
 
   flyway:
-    url: jdbc:postgresql://postgres-container:5432/products-db
+    url: jdbc:postgresql://localhost:5432/products-db
     schemas: products
     user: postgres
     password: postgres
