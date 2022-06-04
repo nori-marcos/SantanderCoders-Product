@@ -1,15 +1,19 @@
 package com.letscode.Product.service.impl;
 
+import com.letscode.Product.DTO.CartListRequest;
 import com.letscode.Product.DTO.ProductRequest;
 import com.letscode.Product.DTO.ProductResponse;
 import com.letscode.Product.model.Product;
 import com.letscode.Product.repository.ProductRepository;
 import com.letscode.Product.service.ProductService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.http.HttpException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class ProductServiceImpl implements ProductService {
@@ -57,5 +61,37 @@ public class ProductServiceImpl implements ProductService {
     }
 
     return new ProductResponse(product, quantity);
+  }
+
+  @Override
+  public void removeItemsFromInventory(CartListRequest productsFromSale) {
+//    Product savedProduct = productRepository.findByUuid(cartRequest.);
+//    int savedProductQuantity = savedProduct.getQuantity();
+//    if (savedProductQuantity < quantity) {
+//      throw new RuntimeException(
+//          String.format("Existem somente %s produtos com nome %s no estoque", savedProduct.getQuantity(),
+//              savedProduct.getName()));
+//    }
+//    log.info("Quantidade em estoque {}", savedProductQuantity);
+//    log.info("Quantidade na venda: {}", quantity);
+//    savedProduct.setQuantity(savedProductQuantity - quantity);
+//    productRepository.save(savedProduct);
+
+    productsFromSale.getProductsOfCart().forEach(
+        product -> {
+          String productUuid = product.getProductUuid();
+          int productFromSaleQuantity = product.getQuantity();
+          Product savedProduct = productRepository.findByUuid(productUuid);
+          int savedProductQuantity = savedProduct.getQuantity();
+          if (savedProductQuantity < productFromSaleQuantity) {
+            throw new RuntimeException(
+                String.format("Existem somente %s produtos com nome %s no estoque", savedProduct.getQuantity(),
+                    savedProduct.getName()));
+          }
+          log.info("Quantidade em estoque {}", savedProductQuantity);
+          log.info("Quantidade na venda: {}", productFromSaleQuantity);
+          savedProduct.setQuantity(savedProductQuantity - productFromSaleQuantity);
+          productRepository.save(savedProduct);
+        });
   }
 }

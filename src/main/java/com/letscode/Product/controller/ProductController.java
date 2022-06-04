@@ -1,5 +1,6 @@
 package com.letscode.Product.controller;
 
+import com.letscode.Product.DTO.CartListRequest;
 import com.letscode.Product.DTO.ProductRequest;
 import com.letscode.Product.DTO.ProductResponse;
 import com.letscode.Product.service.ProductService;
@@ -39,4 +40,18 @@ public class ProductController {
     public ProductResponse getProductForSale(@PathVariable("uuid") String uuid, @PathVariable("quantity") int quantity) {
         return productService.getProductForSale(uuid, quantity);
     }
+
+    /*@GetMapping("/remove/{productUuid}/{quantity}")
+    public String removeItemsFromInventory (@PathVariable("productUuid") String productUuid,
+                                          @PathVariable("quantity") int quantity) {
+        productService.removeItemsFromInventory(productUuid, quantity);
+        return "Removido com sucesso";
+    }*/
+
+    @PutMapping("/remove-items")
+    public String removeItemsFromInventory(@RequestBody CartListRequest cartListRequest) {
+        productService.removeItemsFromInventory(cartListRequest);
+        return "Items successfully removed!";
+    }
+
 }
